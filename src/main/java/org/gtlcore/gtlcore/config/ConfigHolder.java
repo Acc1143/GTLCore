@@ -41,8 +41,8 @@ public class ConfigHolder {
     @Configurable.Range(min = 1)
     public int travelStaffCD = 2;
     @Configurable
-    @Configurable.Comment({ "更大的数值会让界面显示有问题，推荐在样板管理终端管理" })
-    @Configurable.Range(min = 36, max = 360)
+    @Configurable.Comment({ "扩展样板供应器按 9 列布局，最大 108 格" })
+    @Configurable.Range(min = 36, max = 108)
     public int exPatternProvider = 36;
     @Configurable
     @Configurable.Comment("连锁黑名单,支持通配符*")

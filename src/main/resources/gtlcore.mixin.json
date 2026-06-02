@@ -36,6 +36,8 @@
     "ftbu.YouCantBreakAE2Mixin",
     "gtm.CWURecipeCapabilityMixin",
     "gtm.FluidPipeTypeMixin",
+    "gtm.MEPatternBufferPartMachineMixin",
+    "gtm.MEPatternBufferTerminalInventoryMixin",
     "gtm.MEStockingBusPartMachineMixin",
     "gtm.MultiblockInfoCategoryMixin",
     "gtm.OverclockingLogicMixin",
