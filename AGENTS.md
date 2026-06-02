@@ -18,6 +18,14 @@ This file is for AI agents working in this repository.
 - Do not revert user changes. The working tree may already be dirty.
 - Use `apply_patch` for source edits.
 
+## Documentation Rules
+
+- Keep `README.md` as a short Chinese summary and index. Do not turn it into a chronological debug log.
+- Put detailed implementation notes, crash analysis, and compatibility writeups under `docs/`, then link them from `README.md`.
+- Use Chinese filenames for new files under `docs/` unless the user explicitly asks for another naming style.
+- Keep documentation tone consistent with the existing README: direct, colloquial Chinese, and not a formal upstream-style manual.
+- If the user asks to record a celebration count, record it in `README.md` as an explicit count instead of a long event list.
+
 ## Important Files
 
 - Mixin config: `src/main/resources/gtlcore.mixin.json`

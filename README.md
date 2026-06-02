@@ -64,6 +64,14 @@
 
 已经在存档里保存过开关状态的仓，不会被这次默认值硬掰回来。你之前手动关了，那就还是关着，锅自己背。
 
+### GTLAdditions 多方块显示兼容
+
+修了当前重打包 GTLCore 与 `gtladditions-1.0.5-build_6.jar` 同时加载时，右键大型电力多方块可能触发的 `addDisplayText` 崩溃。
+
+车主庆祝次数：`1` 次。原因很简单：右键大型多方块终于不崩了。
+
+详细原因、处理原则和实现边界见 [docs/GTLAdditions多方块显示文本兼容修复.md](docs/GTLAdditions多方块显示文本兼容修复.md)。
+
 ## 用法
 
 把打出来的这个 `gtlcore` jar 扔到 `GregTech-Leisure-CEu-1.4.5` 里面。
