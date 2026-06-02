@@ -7,12 +7,22 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DualHatchPartMachine.class)
 public class DualHatchPartMachineMixin extends ItemBusPartMachine {
 
     public DualHatchPartMachineMixin(IMachineBlockEntity holder, int tier, IO io, Object... args) {
         super(holder, tier, io, args);
+    }
+
+    @Inject(method = "<init>", at = @At("TAIL"), remap = false)
+    private void gtlcore$defaultDistinct(IMachineBlockEntity holder, int tier, IO io, Object[] args, CallbackInfo ci) {
+        if (io == IO.IN) {
+            ((DualHatchPartMachine) (Object) this).tank.setDistinct(true);
+        }
     }
 
     /**
