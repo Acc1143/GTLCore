@@ -53,31 +53,30 @@ Config:
 
 - Field: `ConfigHolder.INSTANCE.exPatternProvider`
 - Default: `36`
-- Range: `36..360`
+- Range: `9..90`
 
 Implementation notes:
 
 - `PartExPatternProviderMixin` and `TileExPatternProviderMixin` replace ExtendedAE's hardcoded `36` with `ConfigHolder.INSTANCE.exPatternProvider`.
 - Do not hardcode this value to `108`.
-- The GUI must move dynamically based on the configured slot count.
+- The GUI uses pre-generated static styles and textures for 1 to 10 rows.
+- More than 10 rows is intentionally unsupported.
 
-Dynamic GUI formula:
+GUI row formula:
 
 - Columns: `9`
-- Original rows: `4`
-- Slot size: `18`
 - `rows = ceil(exPatternProvider / 9)`
-- `offset = (rows - 4) * 18`
+- Supported rows: `1..10`
 
-`StyleManagerMixin` adjusts the loaded AE2 `ScreenStyle` for `ex_pattern_provider.json` after `StyleManager.loadStyleDoc` returns.
+`StyleManagerMixin` redirects ExtendedAE's `ex_pattern_provider.json` to `gtl_ex_pattern_provider_<rows>.json` when the configured row count is not the original 4 rows.
 
 Important details:
 
-- Use `generatedBackground` for the resized GUI background.
-- Set the original fixed `background` to `null`; otherwise the old 243px ExtendedAE texture can draw over the new generated background.
-- Move the `STORAGE` slot top from `127` by `offset`.
-- Move `interface_stored_items` text top from `116` by `offset`.
-- AE2 player inventory slots are bottom-relative through `common/player_inventory.json`, so increasing the generated background height moves them down automatically.
+- Original 4-row layout still uses ExtendedAE's original `ex_pattern_provider.json`.
+- Rows `1`, `2`, `3`, and `5..10` use GTL-provided JSON files in `src/main/resources/assets/ae2/screens/`.
+- Matching PNG files live in `src/main/resources/assets/ae2/textures/guis/`.
+- The generated textures are built from ExtendedAE's original `ex_pattern_provider.png` by keeping the top area, repeating/removing pattern rows, and moving the bottom area.
+- AE2 player inventory slots are bottom-relative through `common/player_inventory.json`, so increasing the screen/background height moves them down automatically.
 
 ## Mixin Notes
 
@@ -101,7 +100,7 @@ AE2 common player inventory style is in:
 
 ## Common Pitfalls
 
-- Do not assume a GUI JSON can be dynamic. AE2 style JSON is static once loaded; dynamic resizing needs a Mixin that mutates `ScreenStyle`.
+- Do not assume a GUI JSON can be dynamic. AE2 style JSON is static once loaded; this project currently uses pre-generated row-specific JSON/PNG files instead.
 - Do not move AE2 player inventory manually unless needed. It is bottom-relative and follows generated background height.
 - Do not leave slot count and GUI slot count mismatched.
 - Do not assume old generated files or tracked resource files are safe to delete.

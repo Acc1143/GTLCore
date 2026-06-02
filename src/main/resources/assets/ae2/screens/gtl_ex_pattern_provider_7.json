@@ -1,9 +1,11 @@
 {
   "$schema": "schema.json",
   "includes": ["common/common.json", "common/player_inventory.json"],
-  "generatedBackground": {
-    "width": 176,
-    "height": 387
+  "background": {
+    "texture": "guis/gtl_ex_pattern_provider_7.png",
+    "textureWidth": 256,
+    "textureHeight": 297,
+    "srcRect": [0, 0, 176, 297]
   },
   "slots": {
     "ENCODED_PATTERN": {
@@ -13,7 +15,7 @@
     },
     "STORAGE": {
       "left": 8,
-      "top": 271,
+      "top": 181,
       "grid": "HORIZONTAL"
     }
   },
@@ -42,7 +44,7 @@
       },
       "position": {
         "left": 8,
-        "top": 260
+        "top": 170
       }
     }
   },

@@ -41,8 +41,8 @@ public class ConfigHolder {
     @Configurable.Range(min = 1)
     public int travelStaffCD = 2;
     @Configurable
-    @Configurable.Comment({ "扩展样板供应器按 9 列布局，过大时界面会很高" })
-    @Configurable.Range(min = 36, max = 360)
+    @Configurable.Comment({ "扩展样板供应器按 9 列布局，当前 GUI 只支持 1 到 10 行" })
+    @Configurable.Range(min = 9, max = 90)
     public int exPatternProvider = 36;
     @Configurable
     @Configurable.Comment("连锁黑名单,支持通配符*")

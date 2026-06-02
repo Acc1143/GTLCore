@@ -53,6 +53,14 @@ repositories {
         url = 'https://maven.parchmentmc.org'
     }
     maven {
+        name = 'Latvian Maven'
+        url = 'https://maven.latvian.dev/releases/'
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
+    maven {
         url "https://maven.saps.dev/releases/"
         content {
             includeGroup "dev.latvian.mods"
@@ -127,6 +135,7 @@ dependencies {
     modImplementation 'appeng:appliedenergistics2-forge-15.2.1'
 
     modImplementation("dev.architectury:architectury-forge:${project.architectury_version}")
+    compileOnly("dev.architectury:architectury-injectables:${project.architectury_injectables_version}")
 
     modImplementation("dev.toma.configuration:configuration-forge-$project.minecraft_version:$project.configuration_version")
 
